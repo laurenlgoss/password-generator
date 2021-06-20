@@ -8,7 +8,8 @@ function writePassword() {
 
   function generatePassword() {
     var length = getLengthInput();
-    var lowerCase = getLowercaseInput();
+    var lowercase = getLowercaseInput();
+    var uppercase = getUppercaseInput();
     return;
   }
 
@@ -48,7 +49,16 @@ generateBtn.addEventListener("click", writePassword);
   }
 
 // Prompt to input desired character types - uppercase
-
+  function getUppercaseInput() {
+    //  Ask user if they want uppercase characters
+    var uppercaseInput = window.confirm("Do you want uppercase letters?");
+    
+    // If user chooses no, function returns false
+    if (!uppercaseInput) {
+      return false;
+    }
+    return uppercaseInput;
+  }
 
 // Prompt to input desired character types - numeric
 
