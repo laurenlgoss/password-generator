@@ -7,7 +7,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   function generatePassword() {
-    return getLengthInput();
+    var length = getLengthInput();
+    var lowerCase = getLowercaseInput();
+    return;
   }
 
   passwordText.value = password;
@@ -34,7 +36,16 @@ generateBtn.addEventListener("click", writePassword);
   }
 
 // Prompt to input desired character types - lowercase
-
+   function getLowercaseInput() {
+    //  Ask user if they want lowercase characters
+    var lowercaseInput = window.confirm("Do you want lowercase letters?");
+    
+    // If user chooses no, function returns false
+    if (!lowercaseInput) {
+      return false;
+    }
+    return lowercaseInput;
+  }
 
 // Prompt to input desired character types - uppercase
 
