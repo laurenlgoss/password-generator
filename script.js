@@ -8,9 +8,10 @@ function writePassword() {
 
   function generatePassword() {
     var length = getLengthInput();
-    var lowercase = getLowercaseInput();
-    var uppercase = getUppercaseInput();
-    var numeric = getNumericInput();
+    var isLowercase = getLowercaseInput();
+    var isUppercase = getUppercaseInput();
+    var isNumeric = getNumericInput();
+    var isSpecial = getSpecialInput();
     return;
   }
 
@@ -63,7 +64,7 @@ generateBtn.addEventListener("click", writePassword);
 
 // Prompt to input desired character types - numeric
   function getNumericInput() {
-    //  Ask user if they want uppercase characters
+    //  Ask user if they want numeric characters
     var numericInput = window.confirm("Do you want numeric characters?");
     
     // If user chooses no, function returns false
@@ -74,7 +75,16 @@ generateBtn.addEventListener("click", writePassword);
   }
 
 // Prompt to input desired character types - special characters
-
+  function getSpecialInput() {
+    //  Ask user if they want special characters
+    var specialInput = window.confirm("Do you want special characters?");
+    
+    // If user chooses no, function returns false
+    if (!specialInput) {
+      return false;
+    }
+    return specialInput;
+  }
 
 // Password generated
 
