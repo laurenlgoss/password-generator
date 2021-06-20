@@ -10,6 +10,7 @@ function writePassword() {
     var length = getLengthInput();
     var lowercase = getLowercaseInput();
     var uppercase = getUppercaseInput();
+    var numeric = getNumericInput();
     return;
   }
 
@@ -61,7 +62,16 @@ generateBtn.addEventListener("click", writePassword);
   }
 
 // Prompt to input desired character types - numeric
-
+  function getNumericInput() {
+    //  Ask user if they want uppercase characters
+    var numericInput = window.confirm("Do you want numeric characters?");
+    
+    // If user chooses no, function returns false
+    if (!numericInput) {
+      return false;
+    }
+    return numericInput;
+  }
 
 // Prompt to input desired character types - special characters
 
