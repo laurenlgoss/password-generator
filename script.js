@@ -18,6 +18,18 @@ function writePassword() {
     var numericArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var specialArray = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ",", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\", "\"", "\'"];
     
+    var lowercaseIndex = Math.floor(Math.random() * lowercaseArray.length);
+    console.log(lowercaseArray[lowercaseIndex]);
+
+    var uppercaseIndex = Math.floor(Math.random() * uppercaseArray.length);
+    console.log(uppercaseArray[uppercaseIndex]);
+
+    var numericIndex = Math.floor(Math.random() * numericArray.length);
+    console.log(numericArray[numericIndex]);
+
+    var specialIndex = Math.floor(Math.random() * specialArray.length);
+    console.log(specialArray[specialIndex]);
+
     return;
   }
 
