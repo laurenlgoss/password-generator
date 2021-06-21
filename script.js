@@ -15,7 +15,7 @@ function writePassword() {
     var isSpecial = getSpecialInput();
 
     // Number of true user inputs
-    var numberTrue = getTrue();
+    var numberTrue = getTrue(isLowercase, isUppercase, isNumeric, isSpecial);
 
     // Array of possible characters
     var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -34,6 +34,18 @@ function writePassword() {
     if (isUppercase) {
       for (var i = 0; i < length / numberTrue; i++) {
         passwordTemplate += characterRandomizer(uppercaseArray);
+      }
+    }
+
+    if (isNumeric) {
+      for (var i = 0; i < length / numberTrue; i++) {
+        passwordTemplate += characterRandomizer(numericArray);
+      }
+    }
+
+    if (isSpecial) {
+      for (var i = 0; i < length / numberTrue; i++) {
+        passwordTemplate += characterRandomizer(specialArray);
       }
     }
 
@@ -118,18 +130,18 @@ function characterRandomizer(array) {
 }
 
 // Gets number of user inputs that are true
-function getTrue() {
+function getTrue(lowercase, uppercase, numeric, special) {
   var trues = 0;
-  if (isLowercase) {
+  if (lowercase) {
     trues += 1;
   }
-  if (isUppercase) {
+  if (uppercase) {
     trues += 1;
   }
-  if (isNumeric) {
+  if (numeric) {
     trues += 1;
   }
-  if (isSpecial) {
+  if (special) {
     trues += 1;
   }
   return trues;
