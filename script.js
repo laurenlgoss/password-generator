@@ -15,45 +15,48 @@ function writePassword() {
 
     var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
     var uppercaseArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    var numericArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    var numericArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
     var specialArray = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ",", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\", "\"", "\'"];
-    
-    var randomLowercase = randomizer(lowercaseArray);
-    var randomUppercase = randomizer(uppercaseArray);
-    var randomNumeric = randomizer(numericArray);
-    var randomSpecial = randomizer(specialArray);
 
-    return;
+    var passwordTemplate = "";
+
+    if (isLowercase) {
+      for (var i = 0; i < length; i++) {  
+        passwordTemplate += characterRandomizer(lowercaseArray);
+      }
+    }
+
+      return passwordTemplate;
+    }
+
+    passwordText.value = password;
+
   }
 
-  passwordText.value = password;
+  // Add event listener to generate button
+  generateBtn.addEventListener("click", writePassword);
 
-}
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-
-// Prompt to input length of password
+  // Prompt to input length of password
   function getLengthInput() {
     // Ask user for their desired password length
     var lengthInput = window.prompt("Choose a password length from 8 to 128 characters long:");
-    
+
     // If user cancels or inputs a number too high/low, function cancels
     if (
-    (!lengthInput) || 
-    (lengthInput < 8) || 
-    (lengthInput > 128) 
+      (!lengthInput) ||
+      (lengthInput < 8) ||
+      (lengthInput > 128)
     ) {
       return;
     }
     return lengthInput;
   }
 
-// Prompt to input desired character types - lowercase
-   function getLowercaseInput() {
+  // Prompt to input desired character types - lowercase
+  function getLowercaseInput() {
     //  Ask user if they want lowercase characters
     var lowercaseInput = window.confirm("Do you want lowercase letters?");
-    
+
     // If user chooses no, function returns false
     if (!lowercaseInput) {
       return false;
@@ -61,11 +64,11 @@ generateBtn.addEventListener("click", writePassword);
     return lowercaseInput;
   }
 
-// Prompt to input desired character types - uppercase
+  // Prompt to input desired character types - uppercase
   function getUppercaseInput() {
     //  Ask user if they want uppercase characters
     var uppercaseInput = window.confirm("Do you want uppercase letters?");
-    
+
     // If user chooses no, function returns false
     if (!uppercaseInput) {
       return false;
@@ -73,11 +76,11 @@ generateBtn.addEventListener("click", writePassword);
     return uppercaseInput;
   }
 
-// Prompt to input desired character types - numeric
+  // Prompt to input desired character types - numeric
   function getNumericInput() {
     //  Ask user if they want numeric characters
     var numericInput = window.confirm("Do you want numeric characters?");
-    
+
     // If user chooses no, function returns false
     if (!numericInput) {
       return false;
@@ -85,11 +88,11 @@ generateBtn.addEventListener("click", writePassword);
     return numericInput;
   }
 
-// Prompt to input desired character types - special characters
+  // Prompt to input desired character types - special characters
   function getSpecialInput() {
     //  Ask user if they want special characters
     var specialInput = window.confirm("Do you want special characters?");
-    
+
     // If user chooses no, function returns false
     if (!specialInput) {
       return false;
@@ -97,8 +100,8 @@ generateBtn.addEventListener("click", writePassword);
     return specialInput;
   }
 
-// Creates a random number
-  function randomizer(array) {
+  // Creates a random number
+  function characterRandomizer(array) {
     var index = Math.floor(Math.random() * array.length);
     return array[index];
   }
