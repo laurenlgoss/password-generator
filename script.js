@@ -28,11 +28,11 @@ function generatePassword() {
     return;
   }
 
-  // User inputs
-  var isLowercase = getLowercaseInput();
-  var isUppercase = getUppercaseInput();
-  var isNumeric = getNumericInput();
-  var isSpecial = getSpecialInput();
+  // Ask user what type of characters they want
+  var isLowercase = window.confirm("Do you want lowercase letters?");
+  var isUppercase = window.confirm("Do you want uppercase letters?");
+  var isNumeric = window.confirm("Do you want numeric characters?");
+  var isSpecial = window.confirm("Do you want special characters?");
 
   var booleanArray = [isLowercase, isUppercase, isNumeric, isSpecial];
 
@@ -47,102 +47,54 @@ function generatePassword() {
 
   var passwordTemplate = "";
 
-  // If user chooses lowercase, adds random lowercase letters to passwordTemplate
+  // If user chooses lowercase, add random lowercase letters to passwordTemplate
   if (isLowercase) {
     for (var i = 0; i < length / numberTrue; i++) {
       passwordTemplate += characterRandomizer(lowercaseArray);
     }
   }
 
-  // If user chooses uppercase, adds random uppercase letters to passwordTemplate
+  // If user chooses uppercase, add random uppercase letters to passwordTemplate
   if (isUppercase) {
     for (var i = 0; i < length / numberTrue; i++) {
       passwordTemplate += characterRandomizer(uppercaseArray);
     }
   }
 
-  // If user chooses numeric, adds random numeric characters to passwordTemplate
+  // If user chooses numeric, add random numeric characters to passwordTemplate
   if (isNumeric) {
     for (var i = 0; i < length / numberTrue; i++) {
       passwordTemplate += characterRandomizer(numericArray);
     }
   }
 
-  // If user chooses special, adds random special characters to passwordTemplate
+  // If user chooses special, add random special characters to passwordTemplate
   if (isSpecial) {
     for (var i = 0; i < length / numberTrue; i++) {
       passwordTemplate += characterRandomizer(specialArray);
     }
   }
 
-  // Generates array from passwordTemplate
+  // Generate array from passwordTemplate
   var passwordTemplateArray = passwordTemplate.split("");
 
-  // Shuffles array into new array
+  // Shuffle array into new random array
   var newArray = shuffleArray(passwordTemplateArray);
 
-  // Returns new array as a string
+  // Return new random array as a string
   return newArray.join("");
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-// Prompt to input desired character types - lowercase
-function getLowercaseInput() {
-  //  Ask user if they want lowercase characters
-  var lowercaseInput = window.confirm("Do you want lowercase letters?");
-
-  // If user chooses no, function returns false
-  if (!lowercaseInput) {
-    return false;
-  }
-  return lowercaseInput;
-}
-
-// Prompt to input desired character types - uppercase
-function getUppercaseInput() {
-  //  Ask user if they want uppercase characters
-  var uppercaseInput = window.confirm("Do you want uppercase letters?");
-
-  // If user chooses no, function returns false
-  if (!uppercaseInput) {
-    return false;
-  }
-  return uppercaseInput;
-}
-
-// Prompt to input desired character types - numeric
-function getNumericInput() {
-  //  Ask user if they want numeric characters
-  var numericInput = window.confirm("Do you want numeric characters?");
-
-  // If user chooses no, function returns false
-  if (!numericInput) {
-    return false;
-  }
-  return numericInput;
-}
-
-// Prompt to input desired character types - special characters
-function getSpecialInput() {
-  //  Ask user if they want special characters
-  var specialInput = window.confirm("Do you want special characters?");
-
-  // If user chooses no, function returns false
-  if (!specialInput) {
-    return false;
-  }
-  return specialInput;
-}
-
-// Gets a random string from chosen array
+// Get a random string from chosen array
 function characterRandomizer(array) {
   var index = Math.floor(Math.random() * array.length);
   return array[index];
 }
 
-// Gets number of user inputs that are true
+// Get number of user inputs that are true
 function getTrues(booleanArray) {
   var trues = 0;
   for (var i = 0; i < booleanArray.length; i++) {
@@ -153,7 +105,7 @@ function getTrues(booleanArray) {
   return trues;
 }
 
-// Shuffles order of characters within array
+// Shuffle order of characters within array
 function shuffleArray(array) {
   for (var i = array.length - 1; i > 0; i--) {
     var j = Math.floor(Math.random() * (i + 1));
