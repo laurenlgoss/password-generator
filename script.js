@@ -18,17 +18,10 @@ function writePassword() {
     var numericArray = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
     var specialArray = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ",", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\", "\"", "\'"];
     
-    var lowercaseIndex = Math.floor(Math.random() * lowercaseArray.length);
-    console.log(lowercaseArray[lowercaseIndex]);
-
-    var uppercaseIndex = Math.floor(Math.random() * uppercaseArray.length);
-    console.log(uppercaseArray[uppercaseIndex]);
-
-    var numericIndex = Math.floor(Math.random() * numericArray.length);
-    console.log(numericArray[numericIndex]);
-
-    var specialIndex = Math.floor(Math.random() * specialArray.length);
-    console.log(specialArray[specialIndex]);
+    var randomLowercase = randomizer(lowercaseArray);
+    var randomUppercase = randomizer(uppercaseArray);
+    var randomNumeric = randomizer(numericArray);
+    var randomSpecial = randomizer(specialArray);
 
     return;
   }
@@ -104,7 +97,8 @@ generateBtn.addEventListener("click", writePassword);
     return specialInput;
   }
 
-// Password generated
-
-
-// Password displayed in HTML
+// Creates a random number
+  function randomizer(array) {
+    var index = Math.floor(Math.random() * array.length);
+    return array[index];
+  }
