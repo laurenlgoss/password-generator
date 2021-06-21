@@ -3,6 +3,9 @@ var generateBtn = document.querySelector("#generate");
 
 var passwordText = document.querySelector("#password");
 
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -84,9 +87,6 @@ function generatePassword() {
   // Return new random array as a string
   return newArray.join("");
 }
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
 
 // Get a random string from chosen array
 function characterRandomizer(array) {
