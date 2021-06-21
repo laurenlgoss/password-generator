@@ -34,8 +34,10 @@ function generatePassword() {
   var isNumeric = getNumericInput();
   var isSpecial = getSpecialInput();
 
+  var booleanArray = [isLowercase, isUppercase, isNumeric, isSpecial];
+
   // Number of true user inputs
-  var numberTrue = getTrues(isLowercase, isUppercase, isNumeric, isSpecial);
+  var numberTrue = getTrues(booleanArray);
 
   // Array of possible characters
   var lowercaseArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -141,19 +143,12 @@ function characterRandomizer(array) {
 }
 
 // Gets number of user inputs that are true
-function getTrues(lowercase, uppercase, numeric, special) {
+function getTrues(booleanArray) {
   var trues = 0;
-  if (lowercase) {
-    trues += 1;
-  }
-  if (uppercase) {
-    trues += 1;
-  }
-  if (numeric) {
-    trues += 1;
-  }
-  if (special) {
-    trues += 1;
+  for (var i = 0; i < booleanArray.length; i++) {
+    if (booleanArray[i]) {
+      trues += 1;
+    }
   }
   return trues;
 }
