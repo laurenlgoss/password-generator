@@ -14,9 +14,11 @@ function writePassword() {
 
 function generatePassword() {
   passwordText.value = "";
+
   // Ask user for their desired password length
   var length = window.prompt("Choose a password length from 8 to 128 characters long:");
-  // If user cancels or inputs a number too high/low, function cancels
+
+  // If user cancels or inputs a number too high/low when asked for length, function cancels
   if (
     (!length) ||
     (length < 8) ||
@@ -26,6 +28,7 @@ function generatePassword() {
     return;
   }
 
+  // User inputs
   var isLowercase = getLowercaseInput();
   var isUppercase = getUppercaseInput();
   var isNumeric = getNumericInput();
@@ -70,20 +73,13 @@ function generatePassword() {
     }
   }
 
+  // Generates array from passwordTemplate
   var passwordTemplateArray = passwordTemplate.split("");
 
-  function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-      var j = Math.floor(Math.random() * (i + 1));
-      var temp = array[i];
-      array[i] = array[j];
-      array[j] = temp;
-    }
-    return array
-  }
-
+  // Shuffles array into new array
   var newArray = shuffleArray(passwordTemplateArray);
 
+  // Returns new array as a string
   return newArray.join("");
 }
 
@@ -160,4 +156,15 @@ function getTrues(lowercase, uppercase, numeric, special) {
     trues += 1;
   }
   return trues;
+}
+
+// Shuffles order of characters within array
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array
 }
