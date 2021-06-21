@@ -21,7 +21,7 @@ function generatePassword() {
   // Ask user for their desired password length
   var length = window.prompt("Choose a password length from 8 to 128 characters long:");
 
-  // If user cancels or inputs a number too high/low when asked for length, function cancels
+  // If user cancels, inputs a number too high/low, or inputs a non-number when asked for length, function cancels
   if (
     (!length) ||
     (length < 8) ||
@@ -48,35 +48,19 @@ function generatePassword() {
   var numericArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
   var specialArray = [" ", "!", "#", "$", "%", "&", "(", ")", "*", "+", "-", ",", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "]", "^", "_", "`", "{", "|", "}", "~", "\\", "\"", "\'"];
 
-  var passwordTemplate = "";
+  var passwordTemplate = addRandomChars();
 
   // If user chooses lowercase, add random lowercase letters to passwordTemplate
-  if (isLowercase) {
-    for (var i = 0; i < length / numberTrue; i++) {
-      passwordTemplate += characterRandomizer(lowercaseArray);
-    }
-  }
+  passwordTemplate += addRandomChars(isLowercase, length, numberTrue, lowercaseArray);
 
   // If user chooses uppercase, add random uppercase letters to passwordTemplate
-  if (isUppercase) {
-    for (var i = 0; i < length / numberTrue; i++) {
-      passwordTemplate += characterRandomizer(uppercaseArray);
-    }
-  }
+  passwordTemplate += addRandomChars(isUppercase, length, numberTrue, uppercaseArray);
 
   // If user chooses numeric, add random numeric characters to passwordTemplate
-  if (isNumeric) {
-    for (var i = 0; i < length / numberTrue; i++) {
-      passwordTemplate += characterRandomizer(numericArray);
-    }
-  }
+  passwordTemplate += addRandomChars(isNumeric, length, numberTrue, numericArray);
 
   // If user chooses special, add random special characters to passwordTemplate
-  if (isSpecial) {
-    for (var i = 0; i < length / numberTrue; i++) {
-      passwordTemplate += characterRandomizer(specialArray);
-    }
-  }
+  passwordTemplate += addRandomChars(isSpecial, length, numberTrue, specialArray);
 
   // Generate array from passwordTemplate
   var passwordTemplateArray = passwordTemplate.split("");
@@ -103,6 +87,17 @@ function getTrues(booleanArray) {
     }
   }
   return trues;
+}
+
+// Add random characters to passwordTemplate based on user input
+function addRandomChars(userInput, length, numberTrue, array) {
+  var passwordChunk = "";
+    if (userInput) {
+      for (var i = 0; i < length / numberTrue; i++) {
+        passwordChunk += characterRandomizer(array);
+      }
+    }
+  return passwordChunk;
 }
 
 // Shuffle order of characters within array
